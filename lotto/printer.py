@@ -1,4 +1,3 @@
-from lotto.prizes import Prizes
 from .lotto import Lotto
 
 '''
@@ -80,7 +79,7 @@ class Printer:
               
         for tk in Lotto.all_tickets:
 
-            print(tk.victory)
+            #print(tk.victory)
             if tk.victory:
 
                 print(f'\n- TICKET {tk.ticket_number} WINS - ')

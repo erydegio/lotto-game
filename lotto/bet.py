@@ -8,6 +8,7 @@ Ask for a bill type to insert and if is correct return it.
 class Bet:
 
     bet_types = {"ambata": 1, "ambo": 2, "terno": 3, "quaterna": 4, "cinquina": 5}
+    max_money = 200
     
     def __init__(self, bet_type, money):
         self.bet_type = bet_type
@@ -31,7 +32,7 @@ class Bet:
 
     def get_money_input():
         money = float(input('Insert the amount of money for that bet:\n'))
-        if 200 >= money >= 1:
+        if Bet.max_money >= money >= 1:
             return money
         else:
             print(f'Amount not valid.')
@@ -73,10 +74,10 @@ class Bet:
             bets_list.append(bet)
             
             # Stop asking for another bet if the user played all the money or all the bets
-            if money_played >= 200:
+            if money_played >= cls.max_money:
                 print('You played all the possible money.\n')
                 return bets_list
-            if len(bets_played) == 5:
+            if len(bets_played) == len(cls.bet_types):
                 print('You made all the possible bets.\n')
                 return bets_list
 
@@ -117,8 +118,8 @@ class Bet:
             money_input = cls.get_money()
             
             # Check if enough money
-            if money_input > (200 - money_played):
-                print(f'Not enough money, you can play max {200 - money_played}€')
+            if money_input > (cls.max_money - money_played):
+                print(f'Not enough money, you can play max {cls.max_money - money_played}€')
                 continue
 
             check_money = True
