@@ -18,7 +18,7 @@ Num. ambata	 ambo	terno	quaterna	cinquina
 class Prizes:
 
     bets = {"ambata": 1, "ambo": 2, "terno": 3, "quaterna": 4, "cinquina": 5}
-    tax = 0.8
+    tax = 0.08
     prize_tutte = 10 # if city == tutte the prize is divided by 10
 
     prizes = [[11.23, 0, 0, 0, 0],
@@ -52,6 +52,6 @@ class Prizes:
         return prize
 
     def calc_net_prize(prize):
-        taxes = prize * 0.08
+        taxes = prize * Prizes.tax
     
         return prize - taxes
